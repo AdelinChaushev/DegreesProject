@@ -92,7 +92,8 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     exploredList = []
-
+  if source == target:
+        return []
     frontier = QueueFrontier()
 
     node = Node((source,None),None,None)
@@ -107,8 +108,6 @@ def shortest_path(source, target):
          neighbors =  neighbors_for_person(node.state[0])
          for neighbor in neighbors:
              if neighbor[1] == target:
-              if node.parent is None:
-                return countNodes(node)
               return countNodes(Node((node.state[0], node.state[1]), node, None))
              if  any(explored == neighbor[1] for explored in exploredList):
                  continue

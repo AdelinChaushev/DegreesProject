@@ -55,7 +55,7 @@ def load_data(directory):
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
-    directory = sys.argv[1] if len(sys.argv) == 2 else "long"
+    directory = sys.argv[1] if len(sys.argv) == 2 else "large"
 
     # Load data from files into memory
     print("Loading data...")
@@ -92,10 +92,10 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     exploredList = []
+
+    frontier = QueueFrontier()
     if source == target:
         return []
-    frontier = QueueFrontier()
-
     node = Node((source,None),None,None)
     frontier.add(node)
     while True:
@@ -106,9 +106,10 @@ def shortest_path(source, target):
          frontier.remove()
          exploredList.append((node.state[0]))
          neighbors =  neighbors_for_person(node.state[0])
+
          for neighbor in neighbors:
              if neighbor[1] == target:
-              return countNodes(Node((node.state[0], node.state[1]), node, None))
+              return countNodes(Node((neighbor[1], neighbor[0]), node, None))
              if  any(explored == neighbor[1] for explored in exploredList):
                  continue
              else:

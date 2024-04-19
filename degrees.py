@@ -107,7 +107,7 @@ def shortest_path(source, target):
          neighbors =  neighbors_for_person(node.state[0])
          for neighbor in neighbors:
              if neighbor[1] == target:
-              return countNodes(Node((neighbor[1],neighbor[0]),node,None))
+              return countNodes(node)
              if  any(explored == neighbor[1] for explored in exploredList):
                  continue
              else:

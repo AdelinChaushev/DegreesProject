@@ -92,7 +92,7 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
     exploredList = []
-  if source == target:
+    if source == target:
         return []
     frontier = QueueFrontier()
 

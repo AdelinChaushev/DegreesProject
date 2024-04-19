@@ -113,6 +113,8 @@ def shortest_path(source, target):
              else:
                  frontier.add(Node((neighbor[1],neighbor[0]),node,None))
                  exploredList.append(neighbor[1])
+         if(target == node.state[0]):
+             return countNodes(Node((node.state[0],node.state[1]),node,None))
 
 
 
